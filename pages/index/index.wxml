@@ -1,0 +1,31 @@
+<!--index.wxml-->
+<view class="container">
+  <View class="hcontainer">
+    <view wx:for="{{words}}" wx:for-item="item">
+      <text class="alphabet text border-bottom" bindtap="handleTap">{{item.name}}</text>   
+    </view>
+  </View>
+  <text class="trans">
+    取消， 撤销； 删去
+  </text>
+  <view class="hcontainer top20">
+    <view class="hcontainer">
+      <view class="phonetic">
+        美 /'ɡʌvɚn/
+      </view>
+      <mp-icon icon="volume-up" color="#007aff" size="{{25}}"></mp-icon>
+    </view>
+    <view class="hcontainer left20">
+      <view class="phonetic">
+        英 /'gʌvn/
+      </view>
+      <mp-icon icon="volume-up" color="#007aff" size="{{25}}"></mp-icon>
+    </view>
+  </view>
+
+  <View class="hcontainer">
+    <view wx:for="{{words}}" wx:for-item="item">
+      <button type="default" size="mini">{{item.name}}</button>
+    </view>
+  </View>
+</view>
