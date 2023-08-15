@@ -22,10 +22,9 @@
       <mp-icon icon="volume-up" color="#007aff" size="{{25}}"></mp-icon>
     </view>
   </view>
-
   <View class="hcontainer">
     <view wx:for="{{words}}" wx:for-item="item">
-      <button type="default" size="mini">{{item.name}}</button>
+      <tag value="{{item.name}}" bindtagtap="onTagTap" class="mini-btn"></tag>
     </view>
   </View>
 </view>

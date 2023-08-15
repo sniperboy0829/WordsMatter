@@ -6,6 +6,15 @@ Page({
   data: {
     words: [{id: 0, name: "s", isMutable: false},{id: 1, name: "i", isMutable: false},{id: 2, name: "m", isMutable: false},{id: 2, name: "o", isMutable: false},{id: 2, name: "n", isMutable: false}],
   },
+
+  onTagTap(event) {
+    console.log('tag 组件点击');
+  },
+
+  handleTap() {
+    console.log("view tapped");
+  },
+
   // 事件处理函数
   bindViewTap() {
     wx.navigateTo({

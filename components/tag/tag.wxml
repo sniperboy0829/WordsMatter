@@ -1,0 +1,3 @@
+<view class="tag" bindtap="onTap" hidden="{{hidden}}">
+  {{value}}  
+</view>
