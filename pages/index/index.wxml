@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <View class="hcontainer">
-    <view wx:for="{{words}}" wx:for-item="item">
+    <view wx:for="{{characters}}" wx:key="id" wx:for-item="item">
       <text class="alphabet text border-bottom" bindtap="handleTap">{{item.name}}</text>   
     </view>
   </View>
@@ -23,7 +23,7 @@
     </view>
   </view>
   <View class="hcontainer">
-    <view wx:for="{{words}}" wx:for-item="item">
+    <view wx:for="{{characters}}" wx:key="id" wx:for-item="item">
       <tag value="{{item.name}}" bindtagtap="onTagTap" class="mini-btn"></tag>
     </view>
   </View>

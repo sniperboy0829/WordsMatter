@@ -1,19 +1,16 @@
-const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
-
-  return `${[year, month, day].map(formatNumber).join('/')} ${[hour, minute, second].map(formatNumber).join(':')}`
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);  
 }
 
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : `0${n}`
-}
-
-module.exports = {
-  formatTime
+export const getRandomIndexes = (length, n) => {
+  let indexes = [];
+  for(let i = 0; i < n; i++) {
+    let randomIndex = getRandomInt(length);
+    if(indexes.indexOf(randomIndex) === -1) {
+      indexes.push(randomIndex);
+    } else {
+      i--;
+    }
+  }
+  return indexes;
 }
