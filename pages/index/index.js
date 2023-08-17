@@ -7,10 +7,10 @@ const app = getApp()
 
 Page({
   data: {
-    characters: [{id: String, name: String, mutable: Boolean}],
-    cIndex: 0,
+    characters: [{id: String, name: String, mutable: Boolean, fill: String}],
     words: [{id: String, name: String, trans: String, usphone: String, ukphone: String}],
-    wIndex: 0
+    wIndex: 0,
+    missChars: [{id: String, name: String}]
   },
 
   onTagTap(event) {
@@ -38,15 +38,25 @@ Page({
     }
     this.setData({words: arr})
     const word = arr[this.data.wIndex]
-    const randomIndexes = getRandomIndexes(word.name.length, 2)
+    const n = Math.floor(word.name.length * 0.8);
+    const randomIndexes = getRandomIndexes(word.name.length, n)
     let cArr = []
     for (let i = 0; i < word.name.length; i++) {
       const name = word.name[i]
       const m = randomIndexes.indexOf(i) !== -1
-      const c = {id: `${i}`, name: m ? "" :word.name[i], mutable: m}
+      const c = {id: `${i}`, name: name, mutable: m, fill: m ? "" : name}
       cArr.push(c)
     }
     this.setData({characters: cArr})
+    let mArr = [];
+    for (let i = 0; i < randomIndexes.length; i++) {
+      const o = randomIndexes[i];
+      const name = word.name[o];
+      const m = {"id": `${o}`, "name": name}
+      mArr.push(m);
+    }
+    this.setData({missChars: mArr});
+
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗

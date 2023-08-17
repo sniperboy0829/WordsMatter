@@ -58,17 +58,3 @@
 .left20 {
   margin-left: 20rpx;
 }
-
-.mini-btn{
-  margin-right: 10rpx;
-}
-
-button{
-  margin-top: 30rpx;
-  margin-bottom: 30rpx;
-}
-
-.button-sp-area{
-  margin: 0 auto;
-  width: 60%;
-}

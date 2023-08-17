@@ -2,7 +2,7 @@
 <view class="container">
   <View class="hcontainer">
     <view wx:for="{{characters}}" wx:key="id" wx:for-item="item">
-      <view class="{{item.mutable ? 'character border-bottom' : 'character'}}" bindtap="handleTap">{{item.name}}</view>   
+      <view class="{{item.mutable ? 'character border-bottom' : 'character'}}" bindtap="handleTap">{{item.fill}}</view>   
     </view>
   </View>
   <text class="trans">
@@ -22,9 +22,9 @@
       <mp-icon icon="volume-up" color="#007aff" size="{{25}}"></mp-icon>
     </view>
   </view>
-  <View class="hcontainer">
-    <view wx:for="{{characters}}" wx:key="id" wx:for-item="item">
-      <tag value="{{item.name}}" bindtagtap="onTagTap" class="mini-btn"></tag>
+  <view class="hcontainer">
+    <view wx:for="{{missChars}}" wx:key="id" wx:for-item="item">
+      <tag value="{{item.name}}" bindtagtap="onTagTap"></tag>
     </view>
-  </View>
+  </view>
 </view>
