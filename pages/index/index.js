@@ -8,8 +8,9 @@ const app = getApp()
 Page({
   data: {
     characters: [{id: String, name: String, mutable: Boolean}],
+    cIndex: 0,
     words: [{id: String, name: String, trans: String, usphone: String, ukphone: String}],
-    examIndex: 0
+    wIndex: 0
   },
 
   onTagTap(event) {
@@ -36,11 +37,13 @@ Page({
       arr.push(tmp);
     }
     this.setData({words: arr})
-    const word = arr[this.data.examIndex]
+    const word = arr[this.data.wIndex]
     const randomIndexes = getRandomIndexes(word.name.length, 2)
     let cArr = []
     for (let i = 0; i < word.name.length; i++) {
-      const c = {id: `${i}`, name: word.name[i], mutable: randomIndexes.indexOf(i) !== -1}
+      const name = word.name[i]
+      const m = randomIndexes.indexOf(i) !== -1
+      const c = {id: `${i}`, name: m ? "" :word.name[i], mutable: m}
       cArr.push(c)
     }
     this.setData({characters: cArr})

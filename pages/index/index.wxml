@@ -2,7 +2,7 @@
 <view class="container">
   <View class="hcontainer">
     <view wx:for="{{characters}}" wx:key="id" wx:for-item="item">
-      <text class="alphabet text border-bottom" bindtap="handleTap">{{item.name}}</text>   
+      <view class="{{item.mutable ? 'character border-bottom' : 'character'}}" bindtap="handleTap">{{item.name}}</view>   
     </view>
   </View>
   <text class="trans">
