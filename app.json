@@ -1,7 +1,8 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/statistics/statistics",
+    "pages/settings/settings"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -11,6 +12,21 @@
   },
   "useExtendedLib": {
     "weui": true
+  },
+  "tabBar":{
+    "list": [{
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/statistics/statistics",
+        "text": "统计"
+      },
+      {
+        "pagePath": "pages/settings/settings",
+        "text": "设置"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

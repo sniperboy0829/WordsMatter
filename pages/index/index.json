@@ -1,6 +1,8 @@
 {
+  "navigationBarTitleText": "首页",
   "usingComponents": {
     "mp-icon": "weui-miniprogram/icon/icon",
-    "tag": "/components/tag/tag"
+    "tag": "/components/tag/tag",
+    "mp-tabbar": "weui-miniprogram/tabbar/tabbar"
   }
 }
