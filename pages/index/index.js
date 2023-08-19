@@ -8,7 +8,8 @@ const app = getApp()
 Page({
   data: {
     characters: [{id: String, name: String, mutable: Boolean, fill: String}],
-    words: [{id: String, name: String, trans: String, usphone: String, ukphone: String}],
+    //result: 0-init, 1-wrong, 2-right
+    words: [{id: String, name: String, trans: String, usphone: String, ukphone: String, result: Number}],
     wIndex: 0,
     missChars: [{name: String}]
   },
@@ -29,6 +30,11 @@ Page({
       tempChars.splice(deleteIndex, 1);
     }
     this.setData({characters: chars, missChars: tempChars});
+    //check word if condition meets
+    const f = chars.filter(item => item.fill === "")
+    if (f.length === 0) {
+      this.checkWord();
+    }
   },
 
   handleTap(event) {
@@ -61,11 +67,11 @@ Page({
     let arr = []
     for (let i = 0; i < data.length; i++) {
       const item = data[i]; 
-      const tmp = {id: `${i}`, name: item.name, trans: item.trans, usphone: item.usphone, ukphone: item.ukphone}
+      const tmp = {id: `${i}`, name: item.name, trans: item.trans, usphone: item.usphone, ukphone: item.ukphone,result: 0};
       arr.push(tmp);
     }
     this.setData({words: arr})
-    const word = arr[this.data.wIndex]
+    const word = arr[this.data.wIndex];
     const n = Math.floor(word.name.length * 0.8);
     const randomIndexes = getRandomIndexes(word.name.length, n)
     let cArr = []
@@ -86,6 +92,19 @@ Page({
     this.setData({missChars: mArr});
 
   },
+  checkWord() {
+    let t = this.data.words[this.data.wIndex];
+    let target = JSON.parse(JSON.stringify(t));
+    const names = this.data.characters.map(item => item.fill);
+    const nameStr = names.join("");
+    let result = 1;
+    if (target.name === nameStr) {
+      result = 2;
+    }
+    target.result = result;
+    this.setData({[`words[${this.data.wIndex}]`]: target});
+  },
+
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
     wx.getUserProfile({

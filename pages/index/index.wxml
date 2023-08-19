@@ -2,7 +2,7 @@
 <view class="container">
   <View class="hcontainer">
     <view wx:for="{{characters}}" wx:key="id" wx:for-item="item">
-      <view class="{{item.mutable ? 'character border-bottom' : 'character'}}" bindtap="handleTap" data-id="{{item.id}}" data-mutable="{{item.mutable}}" data-fill="{{item.fill}}">{{item.fill}}</view>   
+      <view class="character {{item.mutable ? 'border-bottom' : ''}} {{words[wIndex].result!==0 ? (words[wIndex].result===1?'wrong':'right') : ''}}" bindtap="{{words[wIndex].result===0 ? 'handleTap':''}}" data-id="{{item.id}}" data-mutable="{{item.mutable}}" data-fill="{{item.fill}}">{{item.fill}}</view>   
     </view>
   </View>
   <text class="trans">
@@ -22,9 +22,17 @@
       <mp-icon icon="volume-up" color="#007aff" size="{{25}}"></mp-icon>
     </view>
   </view>
-  <view class="hcontainer top200">
+  <view wx:if="{{words[wIndex].result===1}}" class="top20">
+    <view class="highlight">
+      正确答案：{{words[wIndex].name}}
+    </view>
+  </view>
+  <view wx:if="{{missChars.length !==0}}" class="hcontainer top200">
     <view wx:for="{{missChars}}" wx:key="id" wx:for-item="item">
       <tag name="{{item.name}}" bindtagtap="onTagTap" data-name="{{item.name}}"></tag>
     </view>
+  </view>
+  <view wx:if="{{words[wIndex].result !==0}}" class="top200 next">
+    下一个
   </view>
 </view>

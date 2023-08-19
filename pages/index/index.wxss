@@ -21,6 +21,20 @@
   text-align: center;
 }
 
+.wrong {
+  color: #FF3B30;
+}
+
+.right {
+  color: #4CD964;
+}
+
+.highlight {
+  font-size: x-large;
+  font-weight: bold;
+  color: #FF3B30;
+}
+
 .border-bottom {
   border-width: 0 0 1px 0; 
   border-style: solid;
@@ -73,4 +87,14 @@
 
 .left20 {
   margin-left: 20rpx;
+}
+
+.next {
+  background-color: #007AFF;
+  color: white;
+  padding: 4rpx 8rpx;
+  border-radius: 12rpx;
+  font-size: 50rpx;
+  width: 200px;
+  text-align: center;
 }
