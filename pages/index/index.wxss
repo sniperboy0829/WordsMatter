@@ -16,8 +16,9 @@
 
 .character {
   margin: 6rpx;
-  font-size: 80rpx;
-  width: 70rpx;
+  font-size: 60rpx;
+  width: 50rpx;
+  min-height: 40rpx;
   text-align: center;
 }
 
@@ -39,6 +40,12 @@
   border-width: 0 0 1px 0; 
   border-style: solid;
   border-color: #ddd;
+}
+
+.border-fake {
+  border-width: 0 0 1px 0; 
+  border-style: solid;
+  border-color: white;
 }
 
 .userinfo {
@@ -79,6 +86,10 @@
 
 .top100 {
   margin-top: 100rpx;
+}
+
+.top180 {
+  margin-top: 180rpx;
 }
 
 .top200 {

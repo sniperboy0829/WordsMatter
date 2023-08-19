@@ -1,8 +1,8 @@
 <!--index.wxml-->
 <view class="container">
-  <View class="hcontainer">
+  <View class="hcontainer top180">
     <view wx:for="{{characters}}" wx:key="id" wx:for-item="item">
-      <view class="character {{item.mutable ? 'border-bottom' : ''}} {{words[wIndex].result!==0 ? (words[wIndex].result===1?'wrong':'right') : ''}}" bindtap="{{words[wIndex].result===0 ? 'handleTap':''}}" data-id="{{item.id}}" data-mutable="{{item.mutable}}" data-fill="{{item.fill}}">{{item.fill}}</view>   
+      <view class="character {{item.mutable ? 'border-bottom' : 'border-fake'}} {{words[wIndex].result!==0 ? (words[wIndex].result===1?'wrong':'right') : ''}}" bindtap="{{words[wIndex].result===0 ? 'handleTap':''}}" data-id="{{item.id}}" data-mutable="{{item.mutable}}" data-fill="{{item.fill}}">{{item.fill}}</view>  
     </view>
   </View>
   <text class="trans">
