@@ -2,29 +2,29 @@
 <view class="container">
   <View class="hcontainer">
     <view wx:for="{{characters}}" wx:key="id" wx:for-item="item">
-      <view class="{{item.mutable ? 'character border-bottom' : 'character'}}" bindtap="handleTap">{{item.fill}}</view>   
+      <view class="{{item.mutable ? 'character border-bottom' : 'character'}}" bindtap="handleTap" data-id="{{item.id}}" data-mutable="{{item.mutable}}" data-fill="{{item.fill}}">{{item.fill}}</view>   
     </view>
   </View>
   <text class="trans">
-    取消， 撤销； 删去
+    {{words[wIndex].trans}}
   </text>
   <view class="hcontainer top20">
-    <view class="hcontainer">
+    <view class="pcontainer">
       <view class="phonetic">
-        美 /'ɡʌvɚn/
+        美 /{{words[wIndex].usphone}}/
       </view>
       <mp-icon icon="volume-up" color="#007aff" size="{{25}}"></mp-icon>
     </view>
-    <view class="hcontainer left20">
+    <view class="pcontainer left20">
       <view class="phonetic">
-        英 /'gʌvn/
+        英 /{{words[wIndex].ukphone}}/
       </view>
       <mp-icon icon="volume-up" color="#007aff" size="{{25}}"></mp-icon>
     </view>
   </view>
-  <view class="hcontainer">
+  <view class="hcontainer top200">
     <view wx:for="{{missChars}}" wx:key="id" wx:for-item="item">
-      <tag value="{{item.name}}" bindtagtap="onTagTap"></tag>
+      <tag name="{{item.name}}" bindtagtap="onTagTap" data-name="{{item.name}}"></tag>
     </view>
   </view>
 </view>

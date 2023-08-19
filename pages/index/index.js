@@ -10,15 +10,43 @@ Page({
     characters: [{id: String, name: String, mutable: Boolean, fill: String}],
     words: [{id: String, name: String, trans: String, usphone: String, ukphone: String}],
     wIndex: 0,
-    missChars: [{id: String, name: String}]
+    missChars: [{name: String}]
   },
 
   onTagTap(event) {
-    console.log('tag 组件点击');
+    console.log(`page tap, event name: ${event.target.dataset.name}`);
+    const d = event.target.dataset;
+    let chars = JSON.parse(JSON.stringify(this.data.characters));
+    for (let item of chars) {
+      if (item.mutable && item.fill === "") {
+        item.fill = d.name;
+        break;
+      }
+    }
+    let tempChars = JSON.parse(JSON.stringify(this.data.missChars));
+    let deleteIndex = tempChars.findIndex(item => item.name === d.name);
+    if (deleteIndex !== -1) {
+      tempChars.splice(deleteIndex, 1);
+    }
+    this.setData({characters: chars, missChars: tempChars});
   },
 
-  handleTap() {
+  handleTap(event) {
     console.log("view tapped");
+    const d = event.target.dataset;
+    if (!d.mutable || d.fill === "") {
+      return;
+    }
+    let chars = JSON.parse(JSON.stringify(this.data.characters));
+    for (let item of chars) {
+      if (item.id === d.id) {
+        item.fill = "";
+        break;
+      }
+    }
+    let tempChars = JSON.parse(JSON.stringify(this.data.missChars));
+    tempChars.push({name: d.fill});
+    this.setData({characters: chars, missChars: tempChars});
   },
 
   // 事件处理函数
@@ -52,7 +80,7 @@ Page({
     for (let i = 0; i < randomIndexes.length; i++) {
       const o = randomIndexes[i];
       const name = word.name[o];
-      const m = {"id": `${o}`, "name": name}
+      const m = {"name": name}
       mArr.push(m);
     }
     this.setData({missChars: mArr});

@@ -1,6 +1,6 @@
 Component({
   properties: {
-    value: String,
+    name: String,
     hidden: {
       type: Boolean,
       value: false
@@ -8,10 +8,11 @@ Component({
   },
 
   methods: {
-    onTap() {
+    onTap(event) {
       // 点击事件
-      this.triggerEvent('tagtap');
-      this.setData({hidden: true})
+      const i = this.id;
+      console.log(`tag event: ${JSON.stringify(event)}, ${i}`);
+      this.triggerEvent('tagtap', event);
     } 
   }
 })

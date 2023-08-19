@@ -6,6 +6,14 @@
   align-items: flex-end;
 }
 
+.pcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .character {
   margin: 6rpx;
   font-size: 80rpx;
@@ -53,6 +61,14 @@
 
 .top20 {
   margin-top: 20rpx;
+}
+
+.top100 {
+  margin-top: 100rpx;
+}
+
+.top200 {
+  margin-top: 200rpx;
 }
 
 .left20 {
