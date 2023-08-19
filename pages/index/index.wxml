@@ -32,7 +32,7 @@
       <tag name="{{item.name}}" bindtagtap="onTagTap" data-name="{{item.name}}"></tag>
     </view>
   </view>
-  <view wx:if="{{words[wIndex].result !==0}}" class="top200 next">
+  <view wx:if="{{words[wIndex].result !==0}}" bindtap="next" class="top200 next">
     下一个
   </view>
 </view>

@@ -8,10 +8,10 @@ const app = getApp()
 Page({
   data: {
     characters: [{id: String, name: String, mutable: Boolean, fill: String}],
+    missChars: [{name: String}],
     //result: 0-init, 1-wrong, 2-right
     words: [{id: String, name: String, trans: String, usphone: String, ukphone: String, result: Number}],
-    wIndex: 0,
-    missChars: [{name: String}]
+    wIndex: 0
   },
 
   onTagTap(event) {
@@ -70,7 +70,6 @@ Page({
       const tmp = {id: `${i}`, name: item.name, trans: item.trans, usphone: item.usphone, ukphone: item.ukphone,result: 0};
       arr.push(tmp);
     }
-    this.setData({words: arr})
     const word = arr[this.data.wIndex];
     const n = Math.floor(word.name.length * 0.8);
     const randomIndexes = getRandomIndexes(word.name.length, n)
@@ -81,7 +80,7 @@ Page({
       const c = {id: `${i}`, name: name, mutable: m, fill: m ? "" : name}
       cArr.push(c)
     }
-    this.setData({characters: cArr})
+
     let mArr = [];
     for (let i = 0; i < randomIndexes.length; i++) {
       const o = randomIndexes[i];
@@ -89,9 +88,9 @@ Page({
       const m = {"name": name}
       mArr.push(m);
     }
-    this.setData({missChars: mArr});
-
+    this.setData({words: arr, characters: cArr, missChars: mArr});
   },
+  
   checkWord() {
     let t = this.data.words[this.data.wIndex];
     let target = JSON.parse(JSON.stringify(t));
@@ -103,6 +102,32 @@ Page({
     }
     target.result = result;
     this.setData({[`words[${this.data.wIndex}]`]: target});
+  },
+  next() {
+    const nextIndex = ++this.data.wIndex;
+    this.setData({wIndex: nextIndex});
+    this.generateCharacters(nextIndex);
+  },
+
+  generateCharacters(index) {
+    const word = this.data.words[index];
+    const n = Math.floor(word.name.length * 0.8);
+    const randomIndexes = getRandomIndexes(word.name.length, n)
+    let cArr = []
+    for (let i = 0; i < word.name.length; i++) {
+      const name = word.name[i]
+      const m = randomIndexes.indexOf(i) !== -1
+      const c = {id: `${i}`, name: name, mutable: m, fill: m ? "" : name}
+      cArr.push(c)
+    }
+    let mArr = [];
+    for (let i = 0; i < randomIndexes.length; i++) {
+      const o = randomIndexes[i];
+      const name = word.name[o];
+      const m = {"name": name}
+      mArr.push(m);
+    }
+    this.setData({characters: cArr,missChars: mArr});
   },
 
   getUserProfile(e) {
