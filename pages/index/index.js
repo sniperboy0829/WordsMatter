@@ -1,6 +1,5 @@
 // index.js
-import { getDict, CET4 } from '../../utils/dicts.js'
-import { getRandomIndexes } from '../../utils/util.js'
+import { getRandomIndexes, getDict } from '../../utils/util.js'
 
 // 获取应用实例
 const app = getApp()
@@ -55,8 +54,8 @@ Page({
     this.setData({characters: chars, missChars: tempChars});
   },
 
-  onLoad() {
-    const json = getDict(CET4);
+  onShow() {
+    const json = getDict(app.globalData.dict.id);
     const data = JSON.parse(json)
     let arr = []
     for (let i = 0; i < data.length; i++) {
@@ -64,9 +63,8 @@ Page({
       const tmp = {id: `${i}`, name: item.name, trans: item.trans, usphone: item.usphone, ukphone: item.ukphone,result: 0};
       arr.push(tmp);
     }
-    const word = arr[this.data.wIndex];
-    const n = Math.floor(word.name.length * 0.8);
-    const randomIndexes = getRandomIndexes(word.name.length, n)
+    const word = arr[app.globalData.dict.index];
+    const randomIndexes = getRandomIndexes(word.name.length)
     let cArr = []
     for (let i = 0; i < word.name.length; i++) {
       const name = word.name[i]
@@ -82,7 +80,7 @@ Page({
       const m = {"name": name}
       mArr.push(m);
     }
-    this.setData({words: arr, characters: cArr, missChars: mArr});
+    this.setData({words: arr, wIndex: app.globalData.dict.index, characters: cArr, missChars: mArr});
   },
   
   checkWord() {
@@ -99,14 +97,14 @@ Page({
   },
   next() {
     const nextIndex = ++this.data.wIndex;
+    app.globalData.dict.index = nextIndex;
     this.setData({wIndex: nextIndex});
     this.generateCharacters(nextIndex);
   },
 
   generateCharacters(index) {
     const word = this.data.words[index];
-    const n = Math.floor(word.name.length * 0.8);
-    const randomIndexes = getRandomIndexes(word.name.length, n)
+    const randomIndexes = getRandomIndexes(word.name.length)
     let cArr = []
     for (let i = 0; i < word.name.length; i++) {
       const name = word.name[i]

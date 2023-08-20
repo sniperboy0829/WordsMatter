@@ -1,8 +1,26 @@
+import { cet4 } from './cet4';
+// import { cet6 } from './cet6';
+import { gaokao3500 } from './gaokao3500.js';
+import { zhongkaohexin } from './zhongkaohexin.js';
+import { itVocabulary } from './itVocabulary.js';
+import { nce1 } from './nce1.js';
+import { archVocabulary } from './archVocabulary.js';
+
+const app = getApp();
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);  
 }
 
-export const getRandomIndexes = (length, n = length) => {
+export const getRandomIndexes = (length) => {
+  const difficultyLevel = app.globalData.difficultyLevel
+  let n = Math.floor(length * 0.6);
+  if (difficultyLevel === 0) {
+    n = Math.floor(length * 0.3);
+  } else if (difficultyLevel === 2) {
+    n = Math.floor(length * 0.9);
+  }
+  n = Math.max(1, n);
   let indexes = [];
   n = Math.min(length, n)
   for(let i = 0; i < n; i++) {
@@ -26,17 +44,6 @@ export const getDictLibs = () => {
       tags: ['大学英语'],
       url: '/dicts/CET4_T.json',
       length: 2607,
-      language: 'en',
-      languageCategory: 'en',
-    },
-    {
-      id: 'cet6',
-      name: 'CET-6',
-      description: '大学英语六级词库',
-      category: '中国考试',
-      tags: ['大学英语'],
-      url: '/dicts/CET6_T.json',
-      length: 2345,
       language: 'en',
       languageCategory: 'en',
     },
@@ -115,4 +122,21 @@ export const getDifficultyLevel = () => {
     }
   ];
   return levels;
+}
+
+export const getDict = (id) => {
+  if (id === 'cet4') {
+    return cet4;
+  } else if (id === 'gaokao3500') {
+    return gaokao3500;
+  } else if (id === 'zhongkaohexin') {
+    return zhongkaohexin;
+  } else if (id === 'itVocabulary') {
+    return itVocabulary;
+  } else if (id === 'nce1') {
+    return nce1;
+  } else if (id === 'archVocabulary') {
+    return archVocabulary;
+  }
+  return cet4;
 }

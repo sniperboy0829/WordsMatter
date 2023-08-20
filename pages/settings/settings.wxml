@@ -18,9 +18,9 @@
 </view> -->
 <view>
   <mp-cells footer="词库种类不断更新中">
-    <mp-cell value="难度" footer="中等" link="true" bind:tap="tapDifficultyLevel"></mp-cell>
-    <mp-cell value="词库" footer="CET4" link="true" bind:tap="tapDictLib"></mp-cell>
+    <mp-cell value="难度" footer="{{difficultyLevel}}" link="true" bind:tap="tapDifficultyLevel"></mp-cell>
+    <mp-cell value="词库" footer="{{dictName}}" link="true" bind:tap="tapDictLib"></mp-cell>
   </mp-cells>
-  <mp-actionSheet bindactiontap="btnClick" show="{{showActionsheet}}" actions="{{groups}}">
+  <mp-actionSheet bindactiontap="actionTap" show="{{showActionsheet}}" actions="{{groups}}">
   </mp-actionSheet>
 </view>

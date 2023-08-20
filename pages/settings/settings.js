@@ -1,13 +1,18 @@
 import { getDictLibs, getDifficultyLevel } from '../../utils/util.js'
 
+const app = getApp();
+
 Page({
   data: {
+    dictName: 'CET-4',
+    difficultyLevel: '中等',
     showActionsheet: false,
     groups: [
         { text: '示例菜单', value: 1 },
         { text: '示例菜单', value: 2 },
         { text: '负向菜单', type: 'warn', value: 3 }
-    ]
+    ],
+    isSelectDictLib: false,
   },
   onLoad() {
 
@@ -15,22 +20,30 @@ Page({
   tapDifficultyLevel() {
     const leves = getDifficultyLevel();
     const g = leves.map((item) => { return {text: item.name, value: item.id}}); 
-    this.setData({groups:g ,showActionsheet: true});
+    this.setData({groups:g, isSelectDictLib: false, showActionsheet: true});
   },
   tapDictLib() {
     const libs = getDictLibs();
     const g = libs.map((item) => { return {text: item.name, value: item.id}}); 
-    this.setData({groups:g ,showActionsheet: true});
+    this.setData({groups:g, isSelectDictLib: true, showActionsheet: true});
   },
   close: function () {
     this.setData({
         showActionsheet: false
     })
   },
-  btnClick(e) {
-      console.log(e);
-      const v = e.detail.value;
-      console.log(`value:${v}`);
-      this.close();
+  actionTap(e) {
+    console.log(e);
+    const name = this.data.groups[e.detail.index].text;
+    const v = e.detail.value;
+    if (this.data.isSelectDictLib) {
+      app.globalData.dict.id = v;
+      this.setData({dictName: name})
+      //TODO: get dict index from cache
+    } else {
+      app.globalData.difficultyLevel = v;
+      this.setData({difficultyLevel: name})
+    }
+    this.close();
   }
 })

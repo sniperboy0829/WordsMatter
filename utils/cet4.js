@@ -1,4 +1,4 @@
-export const cet4JSON = `[
+export const cet4 = `[
   { "name": "cancel", "trans": ["取消， 撤销； 删去"], "usphone": "'kænsl", "ukphone": "'kænsl" },
   { "name": "explosive", "trans": ["爆炸的； 极易引起争论的", "炸药"], "usphone": "ɪk'splosɪv; ɪk'splozɪv", "ukphone": "ɪk'spləusɪv" },
   { "name": "numerous", "trans": ["众多的"], "usphone": "'numərəs", "ukphone": "'njuːmərəs" },
