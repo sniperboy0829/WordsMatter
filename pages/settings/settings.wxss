@@ -1,0 +1,29 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 80rpx;
+  padding: 40rpx;
+  box-sizing: border-box;
+}
+
+.hcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cell {
+  width: 100%;
+  font-size: 40rpx;
+  height: 80rpx;
+}
+
+.divider {
+  width: 100%;
+  height: 0.1px;
+  background-color: gainsboro;
+}

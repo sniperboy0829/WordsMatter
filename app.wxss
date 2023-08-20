@@ -8,3 +8,11 @@
   padding: 20rpx;
   box-sizing: border-box;
 } 
+
+.top10 {
+  margin-top: 10rpx;
+}
+
+.bottom10 {
+  margin-bottom: 10rpx;
+}
