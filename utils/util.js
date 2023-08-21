@@ -4,7 +4,6 @@ import { gaokao3500 } from './gaokao3500.js';
 import { zhongkaohexin } from './zhongkaohexin.js';
 import { itVocabulary } from './itVocabulary.js';
 import { nce1 } from './nce1.js';
-import { archVocabulary } from './archVocabulary.js';
 
 const app = getApp();
 
@@ -90,18 +89,7 @@ export const getDictLibs = () => {
       length: 900,
       language: 'en',
       languageCategory: 'en',
-    },
-    {
-      id: 'archVocabulary',
-      name: '建筑专业英语',
-      description: '大学建筑专业英语词汇',
-      category: '中国考试',
-      tags: ['专业英语'],
-      url: '/dicts/archVocabulary.json',
-      length: 630,
-      language: 'en',
-      languageCategory: 'en',
-    },
+    }
   ];
   return libs;
 }
@@ -135,8 +123,6 @@ export const getDict = (id) => {
     return itVocabulary;
   } else if (id === 'nce1') {
     return nce1;
-  } else if (id === 'archVocabulary') {
-    return archVocabulary;
   }
   return cet4;
 }

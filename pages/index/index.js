@@ -82,7 +82,7 @@ Page({
     }
     this.setData({words: arr, wIndex: app.globalData.dict.index, characters: cArr, missChars: mArr});
   },
-  
+
   checkWord() {
     let t = this.data.words[this.data.wIndex];
     let target = JSON.parse(JSON.stringify(t));
@@ -96,6 +96,14 @@ Page({
     this.setData({[`words[${this.data.wIndex}]`]: target});
   },
   next() {
+    if (this.data.wIndex === this.data.words.length - 1) {
+      wx.showModal({
+        title: '恭喜',
+        content: '您已完成所有单词，挑战下一个词库吧🎉',
+        showCancel: false
+      });
+      return
+    }
     const nextIndex = ++this.data.wIndex;
     app.globalData.dict.index = nextIndex;
     this.setData({wIndex: nextIndex});
