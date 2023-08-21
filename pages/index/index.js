@@ -113,10 +113,18 @@ Page({
       if (s.id === app.globalData.dict.id) {
         if (result === 2) {
           s.right.push(target.name);
-          s.right = [...new Set(s.right)]; 
+          s.right = [...new Set(s.right)];
+          let deleteIndex = s.wrong.findIndex(item => item === target.name);
+          if (deleteIndex !== -1) {
+            s.wrong.splice(deleteIndex, 1);
+          } 
         } else {
           s.wrong.push(target.name);
           s.wrong = [...new Set(s.wrong)];
+          let deleteIndex = s.right.findIndex(item => item === target.name);
+          if (deleteIndex !== -1) {
+            s.right.splice(deleteIndex, 1);
+          } 
         }
         break;
       }
