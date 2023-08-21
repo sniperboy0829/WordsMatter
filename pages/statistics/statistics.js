@@ -5,7 +5,8 @@ var uChartsInstance = {};
 Page({
   data: {
     cWidth: 750,
-    cHeight: 500
+    cHeight: 500,
+    rightRate: 0,
   },
   onShow() {
     wx.setNavigationBarTitle({title: app.globalData.dict.name});
@@ -17,18 +18,25 @@ Page({
     this.getServerData();
   },
   getServerData() {
-    //模拟从服务器获取数据时的延时
-    setTimeout(() => {
-      //模拟服务器返回数据，如果数据格式和标准格式不同，需自行按下面的格式拼接
-      let res = {
-            series: [
-              {
-                data: [{"name":"正确","value":50},{"name":"错误","value":30},{"name":"剩余","value":20}]
-              }
-            ]
-          };
-      this.drawCharts('ohQtgFeJGawEwaqrbQYZiaMxHWzTiTkZ', res);
-    }, 500);
+    let rCount = 0, wCount = 0, remainingCount = 0;
+    for (const s of app.globalData.statistics) {
+      if (s.id === app.globalData.dict.id) {
+        rCount = s.right.length;
+        wCount = Math.min(s.wrong.length, s.length - rCount);
+        remainingCount = Math.max(0, s.length - rCount - wCount);
+        const rate = Math.round(rCount / (rCount + wCount) * 100) || 0;
+        this.setData({rightRate: rate}); 
+        break;
+      }
+    }
+    let res = {
+      series: [
+        {
+          data: [{"name":"正确","value":rCount},{"name":"错误","value":wCount},{"name":"剩余","value":remainingCount}]
+        }
+      ]
+    };
+    this.drawCharts('ohQtgFeJGawEwaqrbQYZiaMxHWzTiTkZ', res);
   },
   drawCharts(id,data){
     const ctx = wx.createCanvasContext(id, this);
@@ -57,7 +65,7 @@ Page({
           color: "#666666"
         },
         subtitle: {
-          name: "70%",
+          name: `${this.data.rightRate}%`,
           fontSize: 20,
           color: "#7cb5ec"
         },

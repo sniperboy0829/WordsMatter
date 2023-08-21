@@ -1,5 +1,6 @@
 // index.js
-import { getRandomIndexes, getDict } from '../../utils/util.js'
+import { getDict } from '../../utils/util.js';
+import { getRandomIndexes } from '../../utils/random.js';
 
 // 获取应用实例
 const app = getApp()
@@ -58,6 +59,7 @@ Page({
     wx.setNavigationBarTitle({title: app.globalData.dict.name});
     const json = getDict(app.globalData.dict.id);
     const data = JSON.parse(json)
+    console.log(`length: ${data.length}`);
     let arr = []
     for (let i = 0; i < data.length; i++) {
       const item = data[i]; 
@@ -95,6 +97,17 @@ Page({
     }
     target.result = result;
     this.setData({[`words[${this.data.wIndex}]`]: target});
+    //update statistics
+    for (const s of app.globalData.statistics) {
+      if (s.id === app.globalData.dict.id) {
+        if (result === 2) {
+          s.right.push(target.name);
+        } else {
+          s.wrong.push(target.name);
+        }
+        break;
+      }
+    }
   },
   next() {
     if (this.data.wIndex === this.data.words.length - 1) {
