@@ -1,7 +1,7 @@
 // app.js
 App({
   onLaunch() {
-    const dict = wx.getStorageSync('dict') || {id: 'cet4', index: 0};
+    const dict = wx.getStorageSync('dict') || {id: 'cet4', name: 'CET-4', index: 0};
     this.globalData.dict = dict;
     const level = wx.getStorageSync('difficultyLevel') || 1;
     this.globalData.difficultyLevel = level;
@@ -19,7 +19,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    dict: {id: 'cet4', index: 0},
+    dict: {id: 'cet4', name: 'CET-4', index: 0},
     difficultyLevel: 1,
   }
 })

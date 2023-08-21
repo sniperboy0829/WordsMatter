@@ -55,6 +55,7 @@ Page({
   },
 
   onShow() {
+    wx.setNavigationBarTitle({title: app.globalData.dict.name});
     const json = getDict(app.globalData.dict.id);
     const data = JSON.parse(json)
     let arr = []

@@ -34,10 +34,11 @@ Page({
   },
   actionTap(e) {
     console.log(e);
-    const name = this.data.groups[e.detail.index].text;
     const v = e.detail.value;
+    const name = this.data.groups[e.detail.index].text;
     if (this.data.isSelectDictLib) {
       app.globalData.dict.id = v;
+      app.globalData.dict.name = name;
       this.setData({dictName: name})
       //TODO: get dict index from cache
     } else {

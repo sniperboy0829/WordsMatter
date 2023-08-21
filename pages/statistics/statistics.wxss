@@ -1,0 +1,8 @@
+.charts {
+  width: 750rpx;
+  height: 500rpx;
+}
+
+.top200 {
+  margin-top: 200rpx;
+}

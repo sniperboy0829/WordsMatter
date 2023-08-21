@@ -1,1 +1,3 @@
-<view>statistics</view>
+<view class="charts top200">
+  <canvas canvas-id="ohQtgFeJGawEwaqrbQYZiaMxHWzTiTkZ" id="ohQtgFeJGawEwaqrbQYZiaMxHWzTiTkZ" class="charts" bindtouchend="tap"/>
+</view>
