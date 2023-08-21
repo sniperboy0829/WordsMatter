@@ -39,10 +39,16 @@ Page({
     if (this.data.isSelectDictLib) {
       app.globalData.dict.id = v;
       app.globalData.dict.name = name;
+      if (this.data.dictName !== name) {
+        app.globalData.isNeedReload = true;
+      }
       this.setData({dictName: name})
       //TODO: get dict index from cache
     } else {
       app.globalData.difficultyLevel = v;
+      if (this.data.difficultyLevel !== name) {
+        app.globalData.isNeedReload = true;
+      }
       this.setData({difficultyLevel: name})
     }
     this.close();

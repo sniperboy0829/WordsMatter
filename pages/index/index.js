@@ -14,6 +14,17 @@ Page({
     wIndex: 0
   },
 
+  onLoad() {
+    this.loadData();
+  },
+
+  onShow() {
+    if (app.globalData.isNeedReload) {
+      app.globalData.isNeedReload = false;
+      this.loadData();
+    }
+  },
+
   onTagTap(event) {
     console.log(`page tap, event name: ${event.target.dataset.name}`);
     const d = event.target.dataset;
@@ -55,7 +66,7 @@ Page({
     this.setData({characters: chars, missChars: tempChars});
   },
 
-  onShow() {
+  loadData() {
     wx.setNavigationBarTitle({title: app.globalData.dict.name});
     const json = getDict(app.globalData.dict.id);
     const data = JSON.parse(json)
@@ -102,8 +113,10 @@ Page({
       if (s.id === app.globalData.dict.id) {
         if (result === 2) {
           s.right.push(target.name);
+          s.right = [...new Set(s.right)]; 
         } else {
           s.wrong.push(target.name);
+          s.wrong = [...new Set(s.wrong)];
         }
         break;
       }

@@ -35,6 +35,7 @@ App({
     userInfo: null,
     dict: {},
     difficultyLevel: 1,
-    statistics: {}
+    statistics: {},
+    isNeedReload: false,
   }
 })
