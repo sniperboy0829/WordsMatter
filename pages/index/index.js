@@ -27,7 +27,6 @@ Page({
   },
 
   onTagTap(event) {
-    console.log(`page tap, event name: ${event.target.dataset.name}`);
     const d = event.target.dataset;
     let chars = JSON.parse(JSON.stringify(this.data.characters));
     for (let item of chars) {
@@ -78,6 +77,7 @@ Page({
       const tmp = {id: `${i}`, name: item.name, trans: item.trans, usphone: item.usphone, ukphone: item.ukphone,result: 0};
       arr.push(tmp);
     }
+    app.globalData.dict.index = Math.min(app.globalData.dict.index, arr.length - 1); 
     const word = arr[app.globalData.dict.index];
     const randomIndexes = getRandomIndexes(word.name.length)
     let cArr = []
@@ -110,26 +110,24 @@ Page({
     target.result = result;
     this.setData({[`words[${this.data.wIndex}]`]: target});
     //update statistics
-    for (const s of app.globalData.statistics) {
-      if (s.id === app.globalData.dict.id) {
-        if (result === 2) {
-          s.right.push(target.name);
-          s.right = [...new Set(s.right)];
-          let deleteIndex = s.wrong.findIndex(item => item === target.name);
-          if (deleteIndex !== -1) {
-            s.wrong.splice(deleteIndex, 1);
-          } 
-        } else {
-          s.wrong.push(target.name);
-          s.wrong = [...new Set(s.wrong)];
-          let deleteIndex = s.right.findIndex(item => item === target.name);
-          if (deleteIndex !== -1) {
-            s.right.splice(deleteIndex, 1);
-          } 
-        }
-        break;
-      }
+    const s = app.globalData.dict;
+    if (result === 2) {
+      s.right.push(target.name);
+      s.right = [...new Set(s.right)];
+      let deleteIndex = s.wrong.findIndex(item => item === target.name);
+      if (deleteIndex !== -1) {
+        s.wrong.splice(deleteIndex, 1);
+      } 
+    } else {
+      s.wrong.push(target.name);
+      s.wrong = [...new Set(s.wrong)];
+      let deleteIndex = s.right.findIndex(item => item === target.name);
+      if (deleteIndex !== -1) {
+        s.right.splice(deleteIndex, 1);
+      } 
     }
+    s.index = this.data.wIndex + 1;
+    wx.setStorageSync(s.id, s)
   },
   next() {
     if (this.data.wIndex === this.data.words.length - 1) {

@@ -19,16 +19,13 @@ Page({
   },
   getServerData() {
     let rCount = 0, wCount = 0, remainingCount = 0;
-    for (const s of app.globalData.statistics) {
-      if (s.id === app.globalData.dict.id) {
-        rCount = s.right.length;
-        wCount = Math.min(s.wrong.length, s.length - rCount);
-        remainingCount = Math.max(0, s.length - rCount - wCount);
-        const rate = Math.round(rCount / (rCount + wCount) * 100) || 0;
-        this.setData({rightRate: rate}); 
-        break;
-      }
-    }
+    const s = app.globalData.dict;
+    rCount = s.right.length;
+    wCount = Math.min(s.wrong.length, s.length - rCount);
+    remainingCount = Math.max(0, s.length - rCount - wCount);
+    const rate = Math.round(rCount / (rCount + wCount) * 100) || 0;
+    this.setData({rightRate: rate}); 
+        
     let res = {
       series: [
         {

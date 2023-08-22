@@ -3,39 +3,29 @@ import { getDictLibs } from './utils/util.js';
 
 App({
   onLaunch() {
-    const dict = wx.getStorageSync('dict') || {id: 'cet4', name: 'CET-4', index: 0};
-    this.globalData.dict = dict;
-    const stat = wx.getStorageSync('statistics');
-    if (!stat) {
-      console.log(`statistics is not exist`);
+    const currentDictID = wx.getStorageSync('currentDictID') || 'cet4';
+    this.globalData.currentDictID = currentDictID;
+    const dict = wx.getStorageSync(currentDictID);
+    if (!dict) {
+      this.globalData.dict = {id: 'cet4', name: 'CET-4', length: 2607, index: 0, right: [], wrong: []};
       const libs = getDictLibs();
-      let sArray = [];
       for (const item of libs) {
-        sArray.push({id: item.id, name: item.name, length: item.length, right: [], wrong: []});
+        if (item.id === currentDictID) {
+          this.globalData.dict = {id: item.id, name: item.name, length: item.length, index: 0, right: [], wrong: []};
+          break;
+        }
       }
-      this.globalData.statistics = sArray;
     } else {
-      this.globalData.statistics = stat;
+      this.globalData.dict = dict;
     }
     const level = wx.getStorageSync('difficultyLevel') || 1;
     this.globalData.difficultyLevel = level;
-    // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
   },
   globalData: {
-    userInfo: null,
+    currentDictID: 'cet-4',
     dict: {},
     difficultyLevel: 1,
-    statistics: {},
+    // statistics: {},
     isNeedReload: false,
   }
 })
