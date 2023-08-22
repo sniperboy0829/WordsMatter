@@ -74,25 +74,11 @@ Page({
     const json = getDict(app.globalData.dict.id);
     const data = JSON.parse(json)
     console.log(`length: ${data.length}`);
-    //test
-    // let tmp = []
-    // for (let i = 0; i < data.length; i++) {
-    //   const item = data[i]; 
-    //   if(item.name.includes(" ")) {
-    //     continue;
-    //   }
-    //   tmp.push(item)
-    // }
-    // console.log(JSON.stringify(tmp));
-    // return
     let arr = []
     for (let i = 0; i < data.length; i++) {
       const item = data[i]; 
       const tmp = {id: `${i}`, name: item.name, trans: item.trans, usphone: item.usphone, ukphone: item.ukphone,result: 0};
       arr.push(tmp);
-      if(item.name.includes(" ")) {
-        console.log(item.name);
-      }
     }
     app.globalData.dict.index = Math.min(app.globalData.dict.index, arr.length - 1); 
     const word = arr[app.globalData.dict.index];
