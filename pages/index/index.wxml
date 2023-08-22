@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class="container">
+  <view>当前进度: {{progress}}</view>
   <View class="hcontainer top180">
     <view wx:for="{{characters}}" wx:key="id" wx:for-item="item">
       <view class="character {{item.mutable ? 'border-bottom' : 'border-fake'}} {{words[wIndex].result!==0 ? (words[wIndex].result===1?'wrong':'right') : ''}}" bindtap="{{words[wIndex].result===0 ? 'handleTap':''}}" data-id="{{item.id}}" data-mutable="{{item.mutable}}" data-fill="{{item.fill}}">{{item.fill}}</view>  
@@ -15,7 +16,7 @@
       </view>
       <mp-icon icon="volume-up" color="#007aff" size="{{25}}"></mp-icon>
     </view>
-    <view class="pcontainer left20">
+    <view wx:if="{{ words[wIndex].ukphone.length > 0}}" class="pcontainer left20">
       <view class="phonetic">
         英 /{{words[wIndex].ukphone}}/
       </view>

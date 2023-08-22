@@ -11,7 +11,8 @@ Page({
     missChars: [{name: String}],
     //result: 0-init, 1-wrong, 2-right
     words: [{id: String, name: String, trans: String, usphone: String, ukphone: String, result: Number}],
-    wIndex: 0
+    wIndex: 0,
+    progress: '0 / 0',
   },
 
   onLoad() {
@@ -94,7 +95,7 @@ Page({
       const m = {"name": name}
       mArr.push(m);
     }
-    this.setData({words: arr, wIndex: app.globalData.dict.index, characters: cArr, missChars: mArr});
+    this.setData({words: arr, wIndex: app.globalData.dict.index, characters: cArr, missChars: mArr, progress: `${app.globalData.dict.index+1} / ${arr.length}`});
   },
 
   checkWord() {
@@ -141,7 +142,7 @@ Page({
     }
     const nextIndex = ++this.data.wIndex;
     app.globalData.dict.index = nextIndex;
-    this.setData({wIndex: nextIndex});
+    this.setData({wIndex: nextIndex, progress: `${nextIndex+1} / ${this.data.words.length}`});
     this.generateCharacters(nextIndex);
   },
 
