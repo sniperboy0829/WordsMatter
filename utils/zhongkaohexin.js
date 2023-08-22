@@ -7208,15 +7208,6 @@ export const zhongkaohexin = `[
       "ukphone":"ˈɛvrɪweə"
   },
   {
-      "name":"mobile phone",
-      "trans":[
-          "n. 手机；移动电话",
-          " 手机号码；行动电话；手提电话"
-      ],
-      "usphone":"ˈmoʊbəl foʊn",
-      "ukphone":"ˈməʊbaɪl fəʊn"
-  },
-  {
       "name":"trick",
       "trans":[
           "n. 诡计；恶作剧；窍门；花招；骗局；欺诈",
@@ -7312,15 +7303,6 @@ export const zhongkaohexin = `[
       ],
       "usphone":"ʧɔɪs",
       "ukphone":"ʧɔɪs"
-  },
-  {
-      "name":"ice cream",
-      "trans":[
-          "n. 冰淇淋",
-          " 冰激凌；雪糕；冰激淋"
-      ],
-      "usphone":"aɪs krim",
-      "ukphone":"aɪs kriːm"
   },
   {
       "name":"neighbourhood",
@@ -14420,15 +14402,6 @@ export const zhongkaohexin = `[
       "ukphone":"hiː"
   },
   {
-      "name":"well known",
-      "trans":[
-          "adj. 众所周知的；著名的；出名的；为人所熟知的（或熟悉的、认可的）",
-          " 知名的；人所共知"
-      ],
-      "usphone":"wɛl noʊn",
-      "ukphone":"wɛl nəʊn"
-  },
-  {
       "name":"dear",
       "trans":[
           "n. 亲爱的人",
@@ -18106,15 +18079,6 @@ export const zhongkaohexin = `[
       ],
       "usphone":"dɪˈskʌvəri",
       "ukphone":"dɪsˈkʌvəri"
-  },
-  {
-      "name":"according to",
-      "trans":[
-          "prep. 根据；按照；据（…所说）；按（…所报道）",
-          " 依照；根据…所说；依据"
-      ],
-      "usphone":"əˈkɔrdɪŋ tu",
-      "ukphone":"əˈkɔːdɪŋ tuː"
   },
   {
       "name":"weak",

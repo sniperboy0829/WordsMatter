@@ -1,6 +1,6 @@
 import { cet4 } from './cet4';
 // import { cet6 } from './cet6';
-import { gaokao3500 } from './gaokao3500.js';
+import { gaokao } from './gaokao.js';
 import { zhongkaohexin } from './zhongkaohexin.js';
 import { itVocabulary } from './itVocabulary.js';
 import { nce1 } from './nce1.js';
@@ -21,13 +21,13 @@ export const getDictLibs = () => {
       languageCategory: 'en',
     },
     {
-      id: 'gaokao3500',
+      id: 'gaokao',
       name: '高考常见词',
-      description: '高考常见词 3500',
+      description: '高考常见词',
       category: '青少年英语',
       tags: ['通用'],
-      url: '/dicts/GaoKao_3500.json',
-      length: 1668,
+      url: '/dicts/GaoKao.json',
+      length: 3662,
       language: 'en',
       languageCategory: 'en',
     },
@@ -38,7 +38,7 @@ export const getDictLibs = () => {
       category: '青少年英语',
       tags: ['通用'],
       url: '/dicts/ZhongKaoHeXin.json',
-      length: 2140,
+      length: 2136,
       language: 'en',
       languageCategory: 'en',
     },
@@ -60,7 +60,7 @@ export const getDictLibs = () => {
       category: '青少年英语',
       tags: ['新概念英语'],
       url: '/dicts/NCE_1.json',
-      length: 900,
+      length: 859,
       language: 'en',
       languageCategory: 'en',
     }
@@ -89,8 +89,8 @@ export const getDifficultyLevel = () => {
 export const getDict = (id) => {
   if (id === 'cet4') {
     return cet4;
-  } else if (id === 'gaokao3500') {
-    return gaokao3500;
+  } else if (id === 'gaokao') {
+    return gaokao;
   } else if (id === 'zhongkaohexin') {
     return zhongkaohexin;
   } else if (id === 'itVocabulary') {

@@ -40,7 +40,6 @@ Page({
     })
   },
   actionTap(e) {
-    console.log(e);
     const v = e.detail.value;
     const name = this.data.groups[e.detail.index].text;
     if (this.data.isSelectDictLib) {
