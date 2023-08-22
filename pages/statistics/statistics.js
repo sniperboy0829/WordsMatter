@@ -63,7 +63,7 @@ Page({
         },
         subtitle: {
           name: `${this.data.rightRate}%`,
-          fontSize: 20,
+          fontSize: 15,
           color: "#7cb5ec"
         },
         extra: {

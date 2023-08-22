@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <view>当前进度: {{progress}}</view>
-  <View class="hcontainer top180">
+  <View class="hcontainer top140">
     <view wx:for="{{characters}}" wx:key="id" wx:for-item="item">
       <view class="character {{item.mutable ? 'border-bottom' : 'border-fake'}} {{words[wIndex].result!==0 ? (words[wIndex].result===1?'wrong':'right') : ''}}" bindtap="{{words[wIndex].result===0 ? 'handleTap':''}}" data-id="{{item.id}}" data-mutable="{{item.mutable}}" data-fill="{{item.fill}}">{{item.fill}}</view>  
     </view>
@@ -10,17 +10,17 @@
     {{words[wIndex].trans}}
   </text>
   <view class="hcontainer top20">
-    <view class="pcontainer">
+    <view class="pcontainer" bindtap="playUS">
       <view class="phonetic">
         美 /{{words[wIndex].usphone}}/
       </view>
-      <mp-icon icon="volume-up" color="#007aff" size="{{25}}"></mp-icon>
+      <mp-icon type="{{playingUS ? 'field' : 'outline'}}" icon="volume-up" color="#007aff" size="{{25}}"></mp-icon>
     </view>
-    <view wx:if="{{ words[wIndex].ukphone.length > 0}}" class="pcontainer left20">
+    <view wx:if="{{ words[wIndex].ukphone.length > 0}}" class="pcontainer left20" bindtap="playUK">
       <view class="phonetic">
         英 /{{words[wIndex].ukphone}}/
       </view>
-      <mp-icon icon="volume-up" color="#007aff" size="{{25}}"></mp-icon>
+      <mp-icon type="{{playingUK ? 'field' : 'outline'}}" icon="volume-up" color="#007aff" size="{{25}}"></mp-icon>
     </view>
   </view>
   <view wx:if="{{words[wIndex].result===1}}" class="top20">

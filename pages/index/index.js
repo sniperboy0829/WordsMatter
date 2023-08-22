@@ -5,6 +5,8 @@ import { getRandomIndexes } from '../../utils/random.js';
 // 获取应用实例
 const app = getApp()
 
+const youdaoAPI = 'https://dict.youdao.com/dictvoice?audio=';
+
 Page({
   data: {
     characters: [{id: String, name: String, mutable: Boolean, fill: String}],
@@ -13,6 +15,8 @@ Page({
     words: [{id: String, name: String, trans: String, usphone: String, ukphone: String, result: Number}],
     wIndex: 0,
     progress: '0 / 0',
+    playingUS: false,
+    playingUK: false
   },
 
   onLoad() {
@@ -162,5 +166,47 @@ Page({
       mArr.push(m);
     }
     this.setData({characters: cArr,missChars: mArr});
+  },
+
+  playUS(e) {
+    if (this.data.playingUS) {
+      return
+    }
+    this.setData({playingUS: true});
+    const d = this.data.words[this.data.wIndex].name;
+    const url = `${youdaoAPI}${d}&type=0`;
+    this.setData({playing: true});
+    const innerAudioContext = wx.createInnerAudioContext({
+      useWebAudioImplement: true
+    })
+    innerAudioContext.src = url
+    innerAudioContext.play(); // 播放
+    innerAudioContext.onEnded((res) => {
+      this.setData({playingUS: false});
+    });
+    innerAudioContext.onError((res) => {
+      this.setData({playingUS: false});
+    });
+  },
+
+  playUK(e) {
+    if (this.data.playingUK) {
+      return
+    }
+    this.setData({playingUK: true});
+    const d = this.data.words[this.data.wIndex].name;
+    const url = `${youdaoAPI}${d}&type=1`;
+    this.setData({playing: true});
+    const innerAudioContext = wx.createInnerAudioContext({
+      useWebAudioImplement: true
+    })
+    innerAudioContext.src = url
+    innerAudioContext.play(); // 播放
+    innerAudioContext.onEnded((res) => {
+      this.setData({playingUK: false});
+    });
+    innerAudioContext.onError((res) => {
+      this.setData({playingUK: false});
+    });
   }
 })

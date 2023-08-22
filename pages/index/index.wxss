@@ -88,8 +88,8 @@
   margin-top: 100rpx;
 }
 
-.top180 {
-  margin-top: 180rpx;
+.top140 {
+  margin-top: 140rpx;
 }
 
 .top200 {
