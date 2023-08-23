@@ -3,6 +3,7 @@ import { getDictLibs } from './utils/util.js';
 
 App({
   onLaunch() {
+    wx.setInnerAudioOption({obeyMuteSwitch: false});
     const currentDictID = wx.getStorageSync('currentDictID') || 'cet4';
     this.globalData.currentDictID = currentDictID;
     const dict = wx.getStorageSync(currentDictID);
