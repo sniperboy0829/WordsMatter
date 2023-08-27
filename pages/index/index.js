@@ -18,6 +18,18 @@ Page({
     playingUS: false,
     playingUK: false
   },
+  onShareAppMessage: function () {
+    return {
+      title: '像玩游戏一样玩单词',
+      path: '/index/index'
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '单词Go'
+    }
+  },
 
   onLoad() {
     this.loadData();

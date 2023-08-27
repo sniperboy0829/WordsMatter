@@ -8,6 +8,20 @@ Page({
     cHeight: 500,
     rightRate: 0,
   },
+
+  onShareAppMessage: function () {
+    return {
+      title: '像玩游戏一样玩单词',
+      path: '/statistics/statistics'
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '单词Go'
+    }
+  },
+
   onShow() {
     wx.setNavigationBarTitle({title: app.globalData.dict.name});
     //这里的第一个 750 对应 css .charts 的 width

@@ -13,6 +13,19 @@ Page({
     ],
     isSelectDictLib: false,
   },
+
+  onShareAppMessage: function () {
+    return {
+      title: '像玩游戏一样玩单词',
+      path: '/settings/settings'
+    }
+  },
+  onShareTimeline() {
+    return {
+      title: '单词Go'
+    }
+  },
+
   onLoad() {
     const leves = getDifficultyLevel();
     let l = '一般';
