@@ -109,3 +109,8 @@
   width: 200px;
   text-align: center;
 }
+
+.tip {
+  font-size: small;
+  color: #8E8E93;
+}

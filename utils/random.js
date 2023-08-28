@@ -7,6 +7,8 @@ export const getRandomIndexes = (length) => {
     n = Math.floor(length * 0.3);
   } else if (difficultyLevel === 2) {
     n = Math.floor(length * 0.9);
+  } else if (difficultyLevel === 3) {
+    n = length;
   }
   n = Math.max(1, n);
   let indexes = [];

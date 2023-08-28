@@ -16,8 +16,7 @@ Page({
 
   onShareAppMessage: function () {
     return {
-      title: '像玩游戏一样玩单词',
-      path: '/settings/settings'
+      title: '像玩游戏一样玩单词'
     }
   },
   onShareTimeline() {
@@ -27,9 +26,9 @@ Page({
   },
 
   onLoad() {
-    const leves = getDifficultyLevel();
+    const levels = getDifficultyLevel();
     let l = '一般';
-    for (const i of leves) {
+    for (const i of levels) {
       if (i.id === app.globalData.difficultyLevel) {
         l = i.name;
         break;
@@ -84,6 +83,7 @@ Page({
         app.globalData.isNeedReload = true;
       }
       this.setData({difficultyLevel: name})
+      wx.setStorageSync('difficultyLevel', v)
     }
     this.close();
   }

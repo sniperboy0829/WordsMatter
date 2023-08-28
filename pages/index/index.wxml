@@ -6,6 +6,7 @@
       <view class="character {{item.mutable ? 'border-bottom' : 'border-fake'}} {{words[wIndex].result!==0 ? (words[wIndex].result===1?'wrong':'right') : ''}}" bindtap="{{words[wIndex].result===0 ? 'handleTap':''}}" data-id="{{item.id}}" data-mutable="{{item.mutable}}" data-fill="{{item.fill}}">{{item.fill}}</view>  
     </view>
   </View>
+  <view class="top20 tip">tip: 点击已填入的字母即可删除</view>
   <text class="trans">
     {{words[wIndex].trans}}
   </text>

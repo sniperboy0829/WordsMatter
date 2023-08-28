@@ -11,8 +11,7 @@ Page({
 
   onShareAppMessage: function () {
     return {
-      title: '像玩游戏一样玩单词',
-      path: '/statistics/statistics'
+      title: '像玩游戏一样玩单词'
     }
   },
 

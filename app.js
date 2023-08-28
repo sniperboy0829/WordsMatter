@@ -19,7 +19,10 @@ App({
     } else {
       this.globalData.dict = dict;
     }
-    const level = wx.getStorageSync('difficultyLevel') || 1;
+    let level = wx.getStorageSync('difficultyLevel');
+    if (level === "") {
+      level = 1
+    }
     this.globalData.difficultyLevel = level;
   },
   globalData: {

@@ -20,8 +20,7 @@ Page({
   },
   onShareAppMessage: function () {
     return {
-      title: '像玩游戏一样玩单词',
-      path: '/index/index'
+      title: '像玩游戏一样玩单词'
     }
   },
 

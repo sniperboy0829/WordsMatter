@@ -81,6 +81,10 @@ export const getDifficultyLevel = () => {
     {
       id: 2,
       name: "困难",
+    },
+    {
+      id: 3,
+      name: "地狱",
     }
   ];
   return levels;
